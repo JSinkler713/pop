@@ -1,10 +1,19 @@
 'use strict'
 
 console.log('checking js file hooked up')
-//check event listener on bubble
-let bub= document.querySelector('.bubble')
-bub.addEventListener('click', ()=> {
-  console.log('clicked the ball')
-  bub.style.display = 'none';
-});
+//make event listener on whole game-area
+
+let gameArea = document.querySelector('.game-area')
+//if a click hits a ball in the game-area then it
+//console.logs a message
+gameArea.addEventListener('click', (e)=> {
+  if (e.target !== gameArea) {
+    console.log('you clicked the target')
+    //update score
+    //set display to none
+    //send a new bubble
+  }
+  e.stopPropagation();
+})
+
 
