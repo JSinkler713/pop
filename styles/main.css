@@ -6,7 +6,7 @@ body {
 }
 .game-area {
   border: 2px solid black;
-  position: absolute;
+  position: relative;
   height: 80vh;
   width: 100vw;
   overflow: hidden;
@@ -35,7 +35,7 @@ Animations
 
 .bubble {
   display: block;
-  position: relative;
+  position: absolute;
   bottom: 0;
   left:50%;
   background-color: rgba(125, 125, 125, .7);
