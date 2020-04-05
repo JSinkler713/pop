@@ -15,6 +15,7 @@ let gameArea = document.querySelector('.game-area')
 //console.logs a message
 gameArea.addEventListener('click', (e)=> {
   if (e.target !== gameArea) {
+    e.target.classList.toggle('hidden')
     console.log('you clicked the target')
     balloonPop.play()
     //update score
@@ -24,4 +25,17 @@ gameArea.addEventListener('click', (e)=> {
   e.stopPropagation();
 })
 
+//create bubbles down below with random x-coordinates, sizes, and all withinthe game-area with floatUp animations.
+setInterval(()=> {
+  let bubble = document.createElement('span')
+  bubble.classList.add('bubble')
+  let randomXPosition = (Math.floor(Math.random() * 1000)).toString()
+  let randomSize = (Math.floor(Math.random() * 300)).toString()
+  bubble.style.height = randomSize + 'px'
+  bubble.style.width = randomSize + 'px'
+  bubble.style.left = randomXPosition + 'px'
+  
+  console.log(randomXPosition + 'px');
+  gameArea.append(bubble);
+}, 5000);
 
