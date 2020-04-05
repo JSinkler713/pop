@@ -5,15 +5,17 @@
 
 header {
   background-color: rgb(95, 165, 95);
+  text-align: center;
 }
 
 .title {
-  font-size: 3em;
+  font-size: 4em;
   display: block;
+  text-shadow: 5px 10px 10px #000;
 }
 
 body {
-
+  font-family: 'Quicksand', sans-serif;
 }
 .game-area {
   border: 2px solid black;
