@@ -6,19 +6,21 @@ console.log('checking js file hooked up')
 let balloonPop = new Audio('balloonPop.wav')
 
 //make event listener on whole gameArea
-
-
-
-
 let gameArea = document.querySelector('.game-area')
+
+const scoreNumEl = document.querySelector('.scoreNumber')
+
 //if a click hits a ball in the game-area then it
 //console.logs a message
 gameArea.addEventListener('click', (e)=> {
   if (e.target !== gameArea) {
-    e.target.classList.toggle('hidden')
+    gameArea.removeChild(e.target)
+    //try removeChild instead of toggle display none
+    //e.target.classList.toggle('hidden')
     console.log('you clicked the target')
     balloonPop.play()
     //update score
+    scoreNumEl.innerText = Number(scoreNumEl.innerText) + 10;
     //set display to none
     //send a new bubble
   }
@@ -37,5 +39,5 @@ setInterval(()=> {
   
   console.log(randomXPosition + 'px');
   gameArea.append(bubble);
-}, 5000);
+}, 1275);
 
