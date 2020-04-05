@@ -20,13 +20,16 @@ const startBtnEl = document.querySelector('.start')
 //console.logs a message
 gameArea.addEventListener('click', (e)=> {
   if (e.target !== gameArea) {
-    gameArea.removeChild(e.target)
     //try removeChild instead of toggle display none
     //e.target.classList.toggle('hidden')
     console.log('you clicked the target')
     balloonPop.play()
     //update score
-    scoreNumEl.innerText = Number(scoreNumEl.innerText) + 10;
+    //add value with inverse relationship to size
+    let width = Number(e.target.style.width.split('p')[0])
+    gameArea.removeChild(e.target)
+    let valueToAdd = Math.floor(10000 / width)
+    scoreNumEl.innerText = Number(scoreNumEl.innerText) + valueToAdd;
     
     //set display to none
     //send a new bubble
@@ -72,7 +75,7 @@ let stopBubbles = (interval)=> {
 }
 
 let checkScore= (interval)=> {
-  if (Number(scoreNumEl.innerText) == 50) {
+  if (Number(scoreNumEl.innerText) > 500) {
     //gameArea.style.textAlign = 'center'
     gameArea.innerText= 'You Passed Level 1!';
     console.log('you won')
@@ -88,3 +91,5 @@ let checkScore= (interval)=> {
       console.log(offset)
    }, 100);
 */
+
+//write a condition that checks for 5 balls on screen, if so, game over.
