@@ -56,6 +56,7 @@ let startPlay = () => {
 
 let generateBubbles = ()=> {
   let bubbleGen = setInterval(()=> {
+    checkLoss(bubbleGen, 5)
     checkScore(bubbleGen)
     let bubble = document.createElement('span')
     bubble.classList.add('bubble')
@@ -79,6 +80,14 @@ let checkScore= (interval)=> {
     //gameArea.style.textAlign = 'center'
     gameArea.innerText= 'You Passed Level 1!';
     console.log('you won')
+    stopBubbles(interval)
+  }
+}
+
+let checkLoss = (interval, maxBubbles)=> {
+  if (gameArea.children.length > maxBubbles) {
+    console.log('you lost')
+    gameArea.innerText= 'You Lost. Oh no!';
     stopBubbles(interval)
   }
 }
