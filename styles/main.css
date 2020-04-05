@@ -1,5 +1,6 @@
 .title {
   font-size: 3em;
+  display: block;
 }
 body {
 }
@@ -17,11 +18,17 @@ Animations
   0% {
     transform: translateY(0%);
   }
-  50% {
+  25% {
     transform: translateY(-200px);
   }
+  50% {
+    transform: translateY(-450px);
+  }
+  75% {
+    transform: translateY(-800px);
+  }
   100% {
-    transform: translateY(-400px);
+    transform: translateY(-1200px);
   }
 }
 
@@ -34,8 +41,10 @@ Animations
   background-color: green;
   width: 200px;
   height: 200px;
-  animation:floatUp 5s infinite;
+  animation:floatUp 10s infinite;
   cursor: grab;
 }
 
-
+.hidden {
+  display: none;
+}
