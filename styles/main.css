@@ -1,8 +1,19 @@
+* {
+  margin: 0;
+}
+
+
+header {
+  background-color: rgb(95, 165, 95);
+}
+
 .title {
   font-size: 3em;
   display: block;
 }
+
 body {
+
 }
 .game-area {
   border: 2px solid black;
@@ -10,6 +21,7 @@ body {
   height: 80vh;
   width: 100vw;
   overflow: hidden;
+  background-color: rgba(89, 189, 249, .7);
 }
 
 /* floatUp
@@ -38,8 +50,7 @@ Animations
   position: absolute;
   bottom: 0;
   left:50%;
-  background-color: rgba(125, 125, 125, .7);
-  background-color: green;
+  background-color: rgba(238, 113, 68, .9);
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -47,6 +58,9 @@ Animations
   cursor: grab;
 }
 
+.pink {
+background-color: rgba(242, 163, 134, 1);
+}
 .hidden {
   display: none;
 }
