@@ -1,7 +1,14 @@
 'use strict'
 
 console.log('checking js file hooked up')
-//make event listener on whole game-area
+
+//make an audio object
+let balloonPop = new Audio('balloonPop.wav')
+
+//make event listener on whole gameArea
+
+
+
 
 let gameArea = document.querySelector('.game-area')
 //if a click hits a ball in the game-area then it
@@ -9,6 +16,7 @@ let gameArea = document.querySelector('.game-area')
 gameArea.addEventListener('click', (e)=> {
   if (e.target !== gameArea) {
     console.log('you clicked the target')
+    balloonPop.play()
     //update score
     //set display to none
     //send a new bubble
