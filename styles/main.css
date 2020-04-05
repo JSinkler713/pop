@@ -9,6 +9,7 @@ body {
   position: absolute;
   height: 80vh;
   width: 100vw;
+  overflow: hidden;
 }
 
 /* floatUp
