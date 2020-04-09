@@ -3,7 +3,7 @@
 console.log('checking js file hooked up')
 
 //make an audio object
-let balloonPop = new Audio('/assets/balloonPop.wav')
+let balloonPop = new Audio('assets/balloonPop.wav')
 
 //make event listener on whole gameArea
 let gameArea = document.querySelector('.game-area')
