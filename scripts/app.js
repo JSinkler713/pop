@@ -69,7 +69,7 @@ let generateBubbles = ()=> {
     bubble.style.backgroundColor = randomColor
     console.log(randomXPosition + 'px');
     gameArea.append(bubble);
-  }, 5000)
+  }, 3000)
 }
 let stopBubbles = (interval)=> {
   clearInterval(interval)
