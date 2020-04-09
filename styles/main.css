@@ -34,19 +34,19 @@ Animations
 */
 @keyframes floatUp {
   0% {
-    transform: translateY(0%);
+    transform: translateY(8vh);
   }
   25% {
-    transform: translateY(-200px);
+    transform: translateY(-20vh);
   }
   50% {
-    transform: translateY(-450px);
+    transform: translateY(-40vh);
   }
   75% {
-    transform: translateY(-800px);
+    transform: translateY(-60vh);
   }
   100% {
-    transform: translateY(-1200px);
+    transform: translateY(-82vh);
   }
 }
 
