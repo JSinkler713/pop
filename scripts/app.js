@@ -56,7 +56,7 @@ let startPlay = () => {
 
 let generateBubbles = ()=> {
   let bubbleGen = setInterval(()=> {
-    checkLoss(bubbleGen, 5)
+    // checkLoss(bubbleGen, 5)
     checkScore(bubbleGen)
     let bubble = document.createElement('span')
     bubble.classList.add('bubble')
@@ -69,10 +69,12 @@ let generateBubbles = ()=> {
     bubble.style.backgroundColor = randomColor
     console.log(randomXPosition + 'px');
     gameArea.append(bubble);
+    bubble.addEventListener('animationend', ()=> {
+      console.log('game-over')
+      gameArea.innerText= 'You Lost. Oh no!';
+      clearInterval(bubbleGen)
+    });
   }, 3000)
-}
-let stopBubbles = (interval)=> {
-  clearInterval(interval)
 }
 
 let checkScore= (interval)=> {
@@ -83,7 +85,7 @@ let checkScore= (interval)=> {
     stopBubbles(interval)
   }
 }
-
+/*
 let checkLoss = (interval, maxBubbles)=> {
   if (gameArea.children.length > maxBubbles) {
     console.log('you lost')
@@ -91,8 +93,7 @@ let checkLoss = (interval, maxBubbles)=> {
     stopBubbles(interval)
   }
 }
-
-
+*/
 
 /*
     setInterval(()=> {
