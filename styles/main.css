@@ -59,7 +59,7 @@ Animations
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  animation:floatUp 10s infinite;
+  animation:floatUp 10s 1;
   cursor: grab;
 }
 
