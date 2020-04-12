@@ -62,9 +62,9 @@ const makeBubble = (minSize) => {
 
 let generateBubbles = (generationSpeed)=> {
   let bubbleGen = setInterval(()=> {
-    checkScore(bubbleGen)
     let bubble = makeBubble(300)
     gameArea.append(bubble);
+    checkScore(bubbleGen)
     bubble.addEventListener('animationend', ()=> {
       console.log('game-over')
       gameArea.innerText= 'You Lost. Oh no!';
@@ -78,7 +78,7 @@ startBtnEl.addEventListener('click', ()=> {
 })
 
 let checkScore= (interval)=> {
-  if (Number(scoreNumEl.innerText) > 500) {
+  if (Number(scoreNumEl.innerText) > 200) {
     //gameArea.style.textAlign = 'center'
     gameArea.innerText= 'You Passed Level 1!';
     console.log('you won')
