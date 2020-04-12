@@ -1,5 +1,4 @@
 'use strict'
-
 //make an audio object
 const balloonPop = new Audio('assets/balloonPop.wav')
 
@@ -22,11 +21,11 @@ class Level {
     this.level = level;
     this.minBubSize = minBubSize;
   }
-  //function 
+  //functions 
 };
 
-gameArea.addEventListener('click', (e)=> {
-  if (e.target !== gameArea) {
+const playRound= (e)=> {
+  if (e.target!== gameArea) {
     balloonPop.play()
     gameArea.removeChild(e.target)
     //add value with inverse relationship to size
@@ -36,7 +35,10 @@ gameArea.addEventListener('click', (e)=> {
     scoreNumEl.innerText = Number(scoreNumEl.innerText) + valueToAdd;
   }
   e.stopPropagation();
-})
+}
+
+
+gameArea.addEventListener('click', playRound)
 
 const chooseColor = ()=> {
   let colorArray= ['rgba(238, 113, 68, .9)', 'rgb(94, 176, 91)', 'rgba(242, 163, 134, 1)', 'rgb(109, 254, 245)', 'rgb(254, 245, 109)']
@@ -58,8 +60,6 @@ const makeBubble = (minSize) => {
     return bubble;
 }
 
-
-
 let generateBubbles = (generationSpeed)=> {
   let bubbleGen = setInterval(()=> {
     checkScore(bubbleGen)
@@ -73,7 +73,6 @@ let generateBubbles = (generationSpeed)=> {
   }, generationSpeed)
 }
 
-
 startBtnEl.addEventListener('click', ()=> {
   generateBubbles(3000)
 })
@@ -83,6 +82,7 @@ let checkScore= (interval)=> {
     //gameArea.style.textAlign = 'center'
     gameArea.innerText= 'You Passed Level 1!';
     console.log('you won')
-    stopBubbles(interval)
+    clearInterval(interval)
+
   }
 }
