@@ -1,14 +1,7 @@
 'use strict'
-//make an audio object
 const balloonPop = new Audio('assets/balloonPop.wav')
-
-//make event listener on whole gameArea
 const gameArea = document.querySelector('.game-area')
-
-//get scoreElement
 const scoreNumEl = document.querySelector('.scoreNumber')
-
-//get start button element
 const startBtnEl = document.querySelector('.start')
 
 class Level {
@@ -21,10 +14,10 @@ class Level {
     this.level = level;
     this.minBubSize = minBubSize;
   }
-  //functions 
+  //functions
 };
 
-const playRound= (e)=> {
+const popBubble= (e)=> {
   if (e.target!== gameArea) {
     balloonPop.play()
     gameArea.removeChild(e.target)
@@ -36,9 +29,6 @@ const playRound= (e)=> {
   }
   e.stopPropagation();
 }
-
-
-gameArea.addEventListener('click', playRound)
 
 const chooseColor = ()=> {
   let colorArray= ['rgba(238, 113, 68, .9)', 'rgb(94, 176, 91)', 'rgba(242, 163, 134, 1)', 'rgb(109, 254, 245)', 'rgb(254, 245, 109)']
@@ -59,23 +49,22 @@ const makeBubble = (minSize) => {
     console.log(randomXPosition + 'px');
     return bubble;
 }
+let addEventOnBub = function(gen, bub) {
+  bub.addEventListener('animationend', ()=> {
+      console.log('game-over')
+      gameArea.innerText= 'You Lost. Oh no!';
+      clearInterval(gen)
+    });
+}
 
 let generateBubbles = (generationSpeed)=> {
   let bubbleGen = setInterval(()=> {
     let bubble = makeBubble(300)
     gameArea.append(bubble);
-    checkScore(bubbleGen)
-    bubble.addEventListener('animationend', ()=> {
-      console.log('game-over')
-      gameArea.innerText= 'You Lost. Oh no!';
-      clearInterval(bubbleGen)
-    });
+    checkScore(bubbleGen);
+    addEventOnBub(bubbleGen, bubble);
   }, generationSpeed)
 }
-
-startBtnEl.addEventListener('click', ()=> {
-  generateBubbles(3000)
-})
 
 let checkScore= (interval)=> {
   if (Number(scoreNumEl.innerText) > 200) {
@@ -83,6 +72,10 @@ let checkScore= (interval)=> {
     gameArea.innerText= 'You Passed Level 1!';
     console.log('you won')
     clearInterval(interval)
-
   }
 }
+
+gameArea.addEventListener('click', popBubble)
+startBtnEl.addEventListener('click', ()=> {
+  generateBubbles(3000)
+})
