@@ -5,7 +5,7 @@ const scoreNumEl = document.querySelector('.scoreNumber')
 const startBtnEl = document.querySelector('.start')
 
 class Level {
-  constructor(level, speed, minBubSize) {
+  constructor(level, speed, minBubSize, scoreForLevelWin) {
     this.sound = balloonPop;
     this.gameArea = gameArea;
     this.score = scoreNumEl;
@@ -13,6 +13,7 @@ class Level {
     this.generationSpeed = speed;
     this.level = level;
     this.minBubSize = minBubSize;
+    this.scoreForLevelWin = scoreForLevelWin;
   }
   //functions
 };
