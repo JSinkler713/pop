@@ -1,32 +1,22 @@
 'use strict'
-const balloonPop = new Audio('assets/balloonPop.wav')
-const gameArea = document.querySelector('.game-area')
-const scoreNumEl = document.querySelector('.scoreNumber')
-const startBtnEl = document.querySelector('.start')
 
-class Level {
-  constructor(level, speed, minBubSize, scoreForLevelWin) {
-    this.sound = balloonPop;
-    this.gameArea = gameArea;
-    this.score = scoreNumEl;
-    this.nextLevelBtn = startBtnEl;
-    this.generationSpeed = speed;
-    this.level = level;
-    this.minBubSize = minBubSize;
-    this.scoreForLevelWin = scoreForLevelWin;
-  }
-  //functions
-};
+const game = {
+  balloonPop: new Audio('assets/balloonPop.wav'),
+  gameArea: document.querySelector('.game-area'),
+  scoreNumEl: document.querySelector('.scoreNumber'),
+  startBtnEl: document.querySelector('.start')
+}
 
-const popBubble= (e)=> {
-  if (e.target!== gameArea) {
-    balloonPop.play()
-    gameArea.removeChild(e.target)
+
+const popBubble = (e)=> {
+  if (e.target!== game.gameArea) {
+    game.balloonPop.play()
+    game.gameArea.removeChild(e.target)
     //add value with inverse relationship to size
     let width = Number(e.target.style.width.split('p')[0])
     let valueToAdd = Math.floor(10000 / width)
     //update score
-    scoreNumEl.innerText = Number(scoreNumEl.innerText) + valueToAdd;
+    game.scoreNumEl.innerText = Number(game.scoreNumEl.innerText) + valueToAdd;
   }
   e.stopPropagation();
 }
@@ -53,7 +43,7 @@ const makeBubble = (minSize) => {
 let addEventOnBub = function(gen, bub) {
   bub.addEventListener('animationend', ()=> {
       console.log('game-over')
-      gameArea.innerText= 'You Lost. Oh no!';
+      game.gameArea.innerText= 'You Lost. Oh no!';
       clearInterval(gen)
     });
 }
@@ -61,22 +51,37 @@ let addEventOnBub = function(gen, bub) {
 let generateBubbles = (generationSpeed)=> {
   let bubbleGen = setInterval(()=> {
     let bubble = makeBubble(300)
-    gameArea.append(bubble);
+    game.gameArea.append(bubble);
     checkScore(bubbleGen);
     addEventOnBub(bubbleGen, bubble);
   }, generationSpeed)
 }
 
 let checkScore= (interval)=> {
-  if (Number(scoreNumEl.innerText) > 200) {
+  if (Number(game.scoreNumEl.innerText) > 200) {
     //gameArea.style.textAlign = 'center'
-    gameArea.innerText= 'You Passed Level 1!';
+    game.gameArea.innerText= 'You Passed Level 1!';
     console.log('you won')
     clearInterval(interval)
   }
 }
 
-gameArea.addEventListener('click', popBubble)
-startBtnEl.addEventListener('click', ()=> {
+game.gameArea.addEventListener('click', popBubble)
+game.startBtnEl.addEventListener('click', ()=> {
   generateBubbles(3000)
 })
+
+/*
+class Level {
+  constructor(level, speed, minBubSize, scoreForLevelWin) {
+    this.gameArea = gameArea;
+    this.score = scoreNumEl;
+    this.nextLevelBtn = startBtnEl;
+    this.generationSpeed = speed;
+    this.level = level;
+    this.minBubSize = minBubSize;
+    this.scoreForLevelWin = scoreForLevelWin;
+  }
+  //methods
+};
+*/
