@@ -2,6 +2,8 @@
 
 const game = {
   balloonPop: new Audio('assets/balloonPop.wav'),
+  //add game over sound
+  gameOverSound: new Audio('assets/bear_growl_y.wav'),
   gameArea: document.querySelector('.game-area'),
   scoreNumEl: document.querySelector('.scoreNumber'),
   startBtnEl: document.querySelector('.start')
@@ -43,6 +45,8 @@ const makeBubble = (minSize) => {
 let addEventOnBub = function(gen, bub) {
   bub.addEventListener('animationend', ()=> {
       console.log('game-over')
+      // play game over sound
+      game.gameOverSound.play() 
       game.gameArea.innerText= 'You Lost. Oh no!';
       clearInterval(gen)
     });
