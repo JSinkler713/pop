@@ -3,7 +3,7 @@
 const game = {
   balloonPop: new Audio('assets/balloonPop.wav'),
   //add game over sound
-  gameOverSound: new Audio('assets/bear_growl_y.wav'),
+  gameOverSound: new Audio('assets/gameOver.wav'),
   gameArea: document.querySelector('.game-area'),
   scoreNumEl: document.querySelector('.scoreNumber'),
   startBtnEl: document.querySelector('.start')
